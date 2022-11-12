@@ -4,8 +4,6 @@ namespace Tests\Feature;
 
 use App\Models\Car;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
 class CarsTest extends TestCase
@@ -19,7 +17,7 @@ class CarsTest extends TestCase
      */
 
     /** @test  */
-    public function getCarsList()
+    public function getCarsList(): void
     {
         $car = new Car([
             'model' => 'kia rio',
