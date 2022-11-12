@@ -26,3 +26,6 @@ Route::post('/users_cars', [UserCarController::class, 'actionCreateUserCar']);
 Route::get('/users_cars/{user_id}', [UserCarController::class, 'actionGetUserCar']);
 Route::patch('/users_cars/{user_car_id}', [UserCarController::class, 'actionUpdateUserCar']);
 Route::delete('/users_cars/{user_car_id}', [UserCarController::class, 'actionRemoveUserCar']);
+
+Route::get('/users', 'UserController@index');
+Route::get('/cars', 'CarController@index');

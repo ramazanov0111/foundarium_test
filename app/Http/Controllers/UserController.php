@@ -43,10 +43,12 @@ class UserController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
-        User::create([
+        $user = new User([
             'fio' => $request['fio'],
             'age' => $request['age'],
         ]);
+
+        $user->save();
 
         return redirect()->route('user.index');
     }

@@ -54,10 +54,12 @@ class UserCarController extends Controller
      */
     public function actionCreateUserCar(Request $request)
     {
-        UserCar::create([
+        $userCar = new UserCar([
             'user_id' => $request['user_id'],
             'car_id' => $request['car_id'],
         ]);
+
+        $userCar->save();
 
         return view('users.index', [
             'users' => User::query()->orderBy('created_at', 'desc')->paginate(10),

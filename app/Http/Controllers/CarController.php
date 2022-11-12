@@ -44,11 +44,13 @@ class CarController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
-        Car::create([
+        $car = new Car([
             'model' => $request['model'],
             'color' => $request['color'],
             'number' => $request['number'],
         ]);
+
+        $car->save();
 
         return redirect()->route('car.index');
     }
