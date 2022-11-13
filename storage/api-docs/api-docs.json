@@ -1,0 +1,292 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "OpenApi Документация",
+        "description": "Документация для веб-приложения",
+        "contact": {
+            "email": "no-reply@example.com"
+        },
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://localhost",
+            "description": "Основной API"
+        },
+        {
+            "url": "http://localhost",
+            "description": "Для Логирования"
+        }
+    ],
+    "paths": {
+        "/user": {
+            "get": {
+                "tags": [
+                    "user"
+                ],
+                "summary": "Получить список всех пользователей",
+                "description": "Получить список всех пользователей",
+                "operationId": "index",
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/User"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "user"
+                ],
+                "summary": "Сохранение нового пользователя",
+                "operationId": "store",
+                "requestBody": {
+                    "request": "User",
+                    "description": "User data for create",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "fio": {
+                                        "type": "string",
+                                        "example": "Ivanov Ivan"
+                                    },
+                                    "age": {
+                                        "type": "integer",
+                                        "example": "25"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/user/create": {
+            "get": {
+                "tags": [
+                    "user"
+                ],
+                "summary": "Страница добавления нового пользователя",
+                "description": "Страница добавления нового пользователя",
+                "operationId": "create",
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/User"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/user/{user_id}/edit": {
+            "get": {
+                "tags": [
+                    "user"
+                ],
+                "summary": "Страница редактирования пользователя",
+                "description": "Страница редактирования пользователя",
+                "operationId": "edit",
+                "parameters": [
+                    {
+                        "name": "user_id",
+                        "in": "path",
+                        "description": "Пользователь",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/User"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/user/{user_id}": {
+            "delete": {
+                "tags": [
+                    "user"
+                ],
+                "summary": "destroy",
+                "operationId": "destroy",
+                "parameters": [
+                    {
+                        "name": "user_id",
+                        "in": "path",
+                        "description": "Пользователь",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "user"
+                ],
+                "summary": "update",
+                "operationId": "update",
+                "parameters": [
+                    {
+                        "name": "user_id",
+                        "in": "path",
+                        "description": "Пользователь",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        }
+                    }
+                ],
+                "requestBody": {
+                    "request": "User",
+                    "description": "User data for update",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "fio": {
+                                        "type": "string",
+                                        "example": "Ivanov Ivan"
+                                    },
+                                    "age": {
+                                        "type": "integer",
+                                        "example": "25"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "User": {
+                "title": "User",
+                "description": "User model",
+                "properties": {
+                    "id": {
+                        "title": "ID",
+                        "description": "ID",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 1
+                    },
+                    "fio": {
+                        "title": "FIO",
+                        "description": "ФИО пользователя",
+                        "type": "string",
+                        "example": "Иванов Иван Иванович"
+                    },
+                    "age": {
+                        "title": "Age",
+                        "description": "Возраст пользователя",
+                        "type": "integer",
+                        "example": 25
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2021-05-03T16:29:10.000000Z"
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2021-05-03T16:29:10.000000Z"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "User"
+                }
+            },
+            "UserCar": {
+                "title": "UserCar",
+                "description": "UserCar model",
+                "properties": {
+                    "id": {
+                        "title": "ID",
+                        "description": "ID",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 1
+                    },
+                    "user_id": {
+                        "title": "user ID",
+                        "description": "Идентификатор пользователя",
+                        "type": "string",
+                        "example": "Иванов Иван Иванович"
+                    },
+                    "car_id": {
+                        "title": "car ID",
+                        "description": "Идентификатор машины",
+                        "type": "integer",
+                        "example": 25
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2021-05-03T16:29:10.000000Z"
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2021-05-03T16:29:10.000000Z"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "UserCar"
+                }
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "UsersCars",
+            "description": "Работа с бронированием"
+        }
+    ]
+}

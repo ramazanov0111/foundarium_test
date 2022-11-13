@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Carbon\Carbon;
+use DateTime;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
@@ -18,7 +19,6 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
  * @property string|null number
  * @property Carbon|null created_at - Дата создания
  * @property Carbon|null updated_at - Дата обновления
- *
  * @property-read UserCar|null $users
  *
  */
