@@ -22,10 +22,6 @@ use OpenApi\Annotations as OA;
  *      url=L5_SWAGGER_CONST_HOST,
  *      description="Основной API"
  * )
- * @OA\Server(
- *      url=L5_SWAGGER_CONST_HOST_V2,
- *      description="Для Логирования"
- * )
  *
  * @OA\Tag(
  *     name="UsersCars",

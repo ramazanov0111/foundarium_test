@@ -44,7 +44,7 @@ class User extends Model
      *
      * @var int
      */
-    public $id;
+    protected $id;
 
     /**
      * @OA\Property(
@@ -55,7 +55,7 @@ class User extends Model
      *
      * @var string
      */
-    public $fio;
+    protected $fio;
 
     /**
      * @OA\Property(
@@ -66,7 +66,7 @@ class User extends Model
      *
      * @var int
      */
-    public $age;
+    protected $age;
 
     /**
      * @OA\Property(property="created_at", type="datetime", example="2021-05-03T16:29:10.000000Z")

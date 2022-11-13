@@ -16,7 +16,7 @@ class UserController extends Controller
      * @OA\Get(
      *      path="/user",
      *      operationId="index",
-     *      tags={"user"},
+     *      tags={"UserResources"},
      *      summary="Получить список всех пользователей",
      *      description="Получить список всех пользователей",
      *     @OA\Response(
@@ -32,8 +32,10 @@ class UserController extends Controller
      */
     public function index()
     {
+        $users = User::query()->orderBy('created_at', 'desc')->paginate(10);
+
         return view('users.index', [
-            'users' => User::query()->orderBy('created_at', 'desc')->paginate(10),
+            'users' => $users ?? null,
         ]);
     }
 
@@ -41,7 +43,7 @@ class UserController extends Controller
      * @OA\Get(
      *      path="/user/create",
      *      operationId="create",
-     *      tags={"user"},
+     *      tags={"UserResources"},
      *      summary="Страница добавления нового пользователя",
      *      description="Страница добавления нового пользователя",
      *     @OA\Response(
@@ -66,7 +68,7 @@ class UserController extends Controller
      * @OA\Post(
      *      path="/user",
      *      operationId="store",
-     *      tags={"user"},
+     *      tags={"UserResources"},
      *      summary="Сохранение нового пользователя",
      *      @OA\RequestBody(request="User", description="User data for create", required=true,
      *          @OA\JsonContent(
@@ -109,7 +111,7 @@ class UserController extends Controller
      * @OA\Get(
      *      path="/user/{user_id}/edit",
      *      operationId="edit",
-     *      tags={"user"},
+     *      tags={"UserResources"},
      *      summary="Страница редактирования пользователя",
      *      description="Страница редактирования пользователя",
      *     @OA\Parameter(
@@ -144,7 +146,7 @@ class UserController extends Controller
      * @OA\Patch(
      *      path="/user/{user_id}",
      *      operationId="update",
-     *      tags={"user"},
+     *      tags={"UserResources"},
      *      summary="update",
      *     @OA\Parameter(
      *          name="user_id",
@@ -183,7 +185,7 @@ class UserController extends Controller
      * @OA\Delete(
      *      path="/user/{user_id}",
      *      operationId="destroy",
-     *      tags={"user"},
+     *      tags={"UserResources"},
      *      summary="destroy",
      *     @OA\Parameter(
      *          name="user_id",

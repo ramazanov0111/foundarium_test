@@ -46,7 +46,7 @@ class UserCar extends Model
      *
      * @var int
      */
-    public $id;
+    protected $id;
 
     /**
      * @OA\Property(
@@ -57,7 +57,7 @@ class UserCar extends Model
      *
      * @var string
      */
-    public $user_id;
+    protected $user_id;
 
     /**
      * @OA\Property(
@@ -68,7 +68,7 @@ class UserCar extends Model
      *
      * @var int
      */
-    public $car_id;
+    protected $car_id;
 
     /**
      * @OA\Property(property="created_at", type="datetime", example="2021-05-03T16:29:10.000000Z")

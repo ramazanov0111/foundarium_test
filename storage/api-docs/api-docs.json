@@ -12,17 +12,13 @@
         {
             "url": "http://localhost",
             "description": "Основной API"
-        },
-        {
-            "url": "http://localhost",
-            "description": "Для Логирования"
         }
     ],
     "paths": {
         "/user": {
             "get": {
                 "tags": [
-                    "user"
+                    "UserResources"
                 ],
                 "summary": "Получить список всех пользователей",
                 "description": "Получить список всех пользователей",
@@ -42,7 +38,7 @@
             },
             "post": {
                 "tags": [
-                    "user"
+                    "UserResources"
                 ],
                 "summary": "Сохранение нового пользователя",
                 "operationId": "store",
@@ -78,7 +74,7 @@
         "/user/create": {
             "get": {
                 "tags": [
-                    "user"
+                    "UserResources"
                 ],
                 "summary": "Страница добавления нового пользователя",
                 "description": "Страница добавления нового пользователя",
@@ -100,7 +96,7 @@
         "/user/{user_id}/edit": {
             "get": {
                 "tags": [
-                    "user"
+                    "UserResources"
                 ],
                 "summary": "Страница редактирования пользователя",
                 "description": "Страница редактирования пользователя",
@@ -133,7 +129,7 @@
         "/user/{user_id}": {
             "delete": {
                 "tags": [
-                    "user"
+                    "UserResources"
                 ],
                 "summary": "destroy",
                 "operationId": "destroy",
@@ -156,7 +152,7 @@
             },
             "patch": {
                 "tags": [
-                    "user"
+                    "UserResources"
                 ],
                 "summary": "update",
                 "operationId": "update",
@@ -203,6 +199,51 @@
     },
     "components": {
         "schemas": {
+            "Car": {
+                "title": "Car",
+                "description": "Car model",
+                "properties": {
+                    "id": {
+                        "title": "ID",
+                        "description": "ID",
+                        "type": "integer",
+                        "format": "int64",
+                        "example": 1
+                    },
+                    "model": {
+                        "title": "Model",
+                        "description": "Модель машины",
+                        "type": "string",
+                        "example": "Kia Rio"
+                    },
+                    "color": {
+                        "title": "Color",
+                        "description": "Цвет машины",
+                        "type": "string",
+                        "example": "белый"
+                    },
+                    "number": {
+                        "title": "Number",
+                        "description": "Гос номер машины",
+                        "type": "string",
+                        "example": "а111аа"
+                    },
+                    "created_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2021-05-03T16:29:10.000000Z"
+                    },
+                    "updated_at": {
+                        "type": "string",
+                        "format": "date-time",
+                        "example": "2021-05-03T16:29:10.000000Z"
+                    }
+                },
+                "type": "object",
+                "xml": {
+                    "name": "Car"
+                }
+            },
             "User": {
                 "title": "User",
                 "description": "User model",
