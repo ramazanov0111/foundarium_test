@@ -6,6 +6,7 @@
 <input type="text" class="form-control" name="user_id"
        value="{{ $user->id ?? ''}}" required="" hidden>
 
+<hr>
 
 <label for="car_id">Машина</label>
 <select class="form-control" name="car_id">
